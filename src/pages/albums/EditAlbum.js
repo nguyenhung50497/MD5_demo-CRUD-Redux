@@ -66,7 +66,7 @@ export default function EditALbum() {
             .catch((err) => console.log(err));
     };
     const handleEdit = (values) => {
-        let data = [id, {...values, imageAlbum: urls[0]}, user.token]
+        let data = [id, {...values}, user.token]
         dispatch(editAlbum(data)).then(() => {
             navigate('/home/albums')
         })
@@ -78,6 +78,7 @@ export default function EditALbum() {
                     <h1>Edit Album</h1>
                     <Formik 
                         initialValues={{
+                            idAlbum: id,
                             nameAlbum: album.nameAlbum,
                             imageAlbum: urls[0],
                             idUser: user.idUser,
