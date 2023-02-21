@@ -10,7 +10,6 @@ export default function ListSong() {
     useEffect(() => {
         dispatch(getSongs());
     }, []);
-    console.log('song1', songs);
     return (
         <div className="container">
             <h1 className="text-center">List Song</h1>
