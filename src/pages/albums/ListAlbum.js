@@ -51,36 +51,41 @@ export default function ListAlbum() {
             :
             <>
                 <div className="row">
-                    <div className="col-3"></div>
-                    <div className="col-7 mx-auto">
+                    <div className="mx-auto row col-8">
                         {albums !== undefined && albums.map(item => (
-                            <div className="card" style={{width: '50%', margin: '20px'}}>
-                                <img key={item.idAlbum} src={item.imageAlbum} className="card-img-top" alt={item.imageAlbum} />
-                                <div className="card-body">
-                                    <h1>{item.nameAlbum}</h1>
-                                    <p className="card-text"
-                                    style={{color: 'orange'}}>{item.idUser !== undefined && item.username}</p>
-                                    <p className="card-text">{item.countSong}</p>
-                                    <Link to={'/home/edit-album/'+item.idAlbum}><button className="btn btn-primary">Edit</button></Link>
-                                    <button className="btn btn-danger" onClick={() => {
-                                        swal({
-                                            title: "Are you sure?",
-                                            text: "Delete this album!!!",
-                                            icon: "warning",
-                                            buttons: true,
-                                            dangerMode: true,
-                                        })
-                                        .then((willDelete) => {
-                                            if (willDelete) {
-                                                handleDelete(item.idAlbum)
-                                                swal("Poof! Your album has been deleted!", {
-                                                icon: "success",
-                                            });
-                                            } else {
-                                            swal("Your album is safe!");
-                                            }
-                                        });
-                                    }}>Delete</button>
+                            <div className="col-6">
+                                <div key={item.idAlbum} className="card" style={{width: '100%', height: '100%', paddingBottom:'30px'}}>
+                                    <img key={item.idAlbum} src={item.imageAlbum} className="card-img-top" alt={item.imageAlbum} />
+                                    <div className="card-body">
+                                        <h1>{item.nameAlbum}</h1>
+                                        <p className="card-text"
+                                        style={{color: 'orange'}}>{item.idUser !== undefined && item.username}</p>
+                                        <p className="card-text">{item.countSong}</p>
+                                        { user.idUser === item.idUser &&
+                                        <>
+                                            <Link to={'/home/edit-album/'+item.idAlbum}><button className="btn btn-primary">Edit</button></Link>
+                                            <button className="btn btn-danger" onClick={() => {
+                                                swal({
+                                                    title: "Are you sure?",
+                                                    text: "Delete this album!!!",
+                                                    icon: "warning",
+                                                    buttons: true,
+                                                    dangerMode: true,
+                                                })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                        handleDelete(item.idAlbum)
+                                                        swal("Poof! Your album has been deleted!", {
+                                                        icon: "success",
+                                                    });
+                                                    } else {
+                                                    swal("Your album is safe!");
+                                                    }
+                                                });
+                                            }}>Delete</button>
+                                        </>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         ))}
