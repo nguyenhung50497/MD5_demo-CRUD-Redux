@@ -8,3 +8,11 @@ export const login = createAsyncThunk (
         return res.data;
     }
 )
+
+export const register = createAsyncThunk (
+    'user/register',
+    async (data) => {
+        const res = await customAxios.post('users/register', data);
+        return res.data;
+    }
+)

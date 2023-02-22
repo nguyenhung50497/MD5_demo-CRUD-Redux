@@ -3,7 +3,8 @@ import { addAlbum, deleteAlbum, editAlbum, getAlbumById, getAlbums } from "../..
 
 const initialState = {
     albums: [],
-    album: {}
+    album: {},
+    loading: true
 }
 
 const albumSlice = createSlice({
@@ -13,6 +14,7 @@ const albumSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(getAlbums.fulfilled, (state, action) => {
             state.albums = action.payload;
+            state.loading = false;
         });
         builder.addCase(getAlbumById.fulfilled, (state, action) => {
             state.album = action.payload;
@@ -22,10 +24,10 @@ const albumSlice = createSlice({
         });
         builder.addCase(deleteAlbum.fulfilled, (state, action) => {
             state.albums.splice(action.payload, 1);
-        })
+        });
         builder.addCase(editAlbum.fulfilled, (state, action) => {
             state.albums.splice(action.payload[0], 1, action.payload[1]);
-        })
+        });
     }
 })
 

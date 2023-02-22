@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../service/userService";
 import { useEffect } from "react";
+import swal from 'sweetalert';
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -12,10 +13,10 @@ export default function Login() {
             if (e.payload !== "User not found" && e.payload !== "Wrong password") {
                 navigate('/home/albums')
             } else if (e.payload === "User not found" ) {
-                alert("User not found");
+                swal("User not found");
                 navigate('/')
             } else if (e.payload === "Wrong password" ) {
-                alert("Wrong password");
+                swal("Wrong password");
                 navigate('/')
             } else {
                 navigate('/')
@@ -52,8 +53,8 @@ export default function Login() {
                             <Field type="password" name={'password'} className="form-control" id="password" />
                         </div>
                         <div>
-                            <button className="btn btn-primary">Login</button>
-                            <button className="btn btn-secondary ml-3">
+                            <button type="submit" className="btn btn-primary">Login</button>
+                            <button type="button" className="btn btn-secondary ml-3">
                                 <Link to={"/register"} style={{textDecoration: "none", color:"white"}}>Register</Link>
                             </button>
                         </div>

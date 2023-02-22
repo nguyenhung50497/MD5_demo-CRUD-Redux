@@ -90,9 +90,9 @@ export default function CreateALbum() {
                             <div class="form-group">
                                 <label for="exampleFormControlFile1"><strong>Upload Image Album</strong></label>
                                 <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple onChange={handleChange} />
+                                <br/>
                                 <button type="button" className="btn btn-secondary" onClick={() => dispatch(handleUpload)}>Upload</button>
                             </div>
-                            
                             <br/>
                             <button type="submit" className="btn btn-primary">Save</button>
                         </Form>

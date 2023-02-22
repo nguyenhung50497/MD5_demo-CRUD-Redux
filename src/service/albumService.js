@@ -3,8 +3,8 @@ import customAxios from "./api"
 
 export const getAlbums = createAsyncThunk(
     'albums/getAlbums',
-    async ()=> {
-        const res = await customAxios.get('albums');
+    async (page)=> {
+        const res = await customAxios.get('albums?page=' + page);
         return res.data;
     }
 )

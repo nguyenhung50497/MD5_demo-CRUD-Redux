@@ -54,8 +54,7 @@ export default function EditALbum() {
                     },
                     async () => {
                         await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
-                            setUrls([])
-                            setUrls(prevState => [...prevState, downloadURLs])
+                            setUrls(prevState => [downloadURLs,...prevState])
                         });
                     }
                 );
